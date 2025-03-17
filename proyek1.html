@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salin Kode Jam Digital</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .copy-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .code-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        textarea {
+            padding: 10px;
+            font-size: 18px; 
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            resize: none;
+            background-color: #f9f9f9;
+            height: 200px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode textarea {
+            background-color: #34495e;
+            border-color: #7f8c8d;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .dark-mode button {
+            background-color: #00ffcc;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .section-title {
+            color: #ecf0f1;
+        }
+
+        .mode-toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mode-toggle-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .dark-mode .mode-toggle-btn {
+            background-color: #00ffcc;
+        }
+
+        /* Efek perubahan warna teks dalam textarea */
+        .blue-text {
+            color: #3498db;
+        }
+
+        .black-text {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+  
+    <button class="mode-toggle-btn" onclick="toggleMode()">☀️</button>
+
+    <h1 id="dynamicTitle">Salin Kode Jam Digital</h1>
+
+    <div class="copy-container">
+        <div class="code-box">
+            <div class="section-title">HTML</div>
+            <textarea id="htmlText" readonly class="blue-text">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jam Digital</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="clock" id="clock">
+    <p id="time"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+            </textarea>
+            <button onclick="copyText('htmlText')">Salin HTML</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">CSS</div>
+            <textarea id="cssText" readonly class="blue-text">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2c3e50;
+  font-family: 'Arial', sans-serif;
+}
+
+.clock {
+  background-color: #34495e;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#time {
+  color: #ecf0f1;
+  font-size: 60px;
+  text-align: center;
+}
+            </textarea>
+            <button onclick="copyText('cssText')">Salin CSS</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">JavaScript</div>
+            <textarea id="jsText" readonly class="blue-text">
+function updateTime() {
+  const timeElement = document.getElementById('time');
+  const now = new Date();
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+
+  hours = hours < 10 ? '0' + hours : hours;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+
+  timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(updateTime, 1000);
+            </textarea>
+            <button onclick="copyText('jsText')"> JavaScript</button>
+        </div>
+    </div>
+
+    <script>
+        function copyText(id) {
+            var copyText = document.getElementById(id);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy");
+            alert("Kode berhasil disalin!");
+        }
+
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle("dark-mode");
+            
+            const modeButton = document.querySelector('.mode-toggle-btn');
+            modeButton.textContent = body.classList.contains("dark-mode") ? "🌙" : "☀️";
+        }
+
+        function changeColorDynamic() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                let isBlue = textarea.classList.contains('blue-text');
+                textarea.classList.toggle('blue-text', !isBlue);
+                textarea.classList.toggle('black-text', isBlue);
+            });
+        }
+        
+        setInterval(changeColorDynamic, 1000);
+
+        function changeTechColor() {
+            const colors = ['#00ffff', '#8a2be2', '#00ff00', '#ff00ff'];
+            const title = document.getElementById('dynamicTitle');
+
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            title.style.color = randomColor;
+        }
+
+        setInterval(changeTechColor, 1000);
+        
+    </script>
+
+</body>
+</html>

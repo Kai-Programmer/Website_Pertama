@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registrasi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #000428, #004e92);
+            transition: background 0.5s ease;
+        }
+        
+        /* Animasi perubahan warna tombol mode */
+@keyframes modeButtonColorChange {
+    0% { background-color: #00ccff; }
+    25% { background-color: #ff3399; }
+    50% { background-color: #ffcc00; }
+    75% { background-color: #9900ff; }
+    100% { background-color: #00ff99; }
+}
+
+.mode-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 30px;
+    background-color: #00ccff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    animation: modeButtonColorChange 5s infinite alternate;  /* Menambahkan animasi warna */
+}
+
+.mode-btn:hover {
+    background-color: red;
+    color: black;
+}
+
+        .container {
+            width: 400px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            position: relative;
+            animation: glow 4s infinite alternate;
+            transition: color 0.5s ease;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 30px #00ffcc, 0 0 60px #00ccff, 0 0 90px #00b3ff; }
+            25% { box-shadow: 0 0 40px #ff00ff, 0 0 80px #ff3399, 0 0 120px #ff0099; }
+            50% { box-shadow: 0 0 50px #ffcc00, 0 0 100px #ff6600, 0 0 150px #ff3300; }
+            75% { box-shadow: 0 0 60px #9900ff, 0 0 120px #6600cc, 0 0 180px #330099; }
+            100% { box-shadow: 0 0 70px #00ff99, 0 0 140px #00cc66, 0 0 210px #009966; }
+        }
+
+        .login-title {
+            font-size: 30px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            animation: colorChange 5s infinite alternate;
+        }
+
+        @keyframes colorChange {
+            0% { color: #00ccff; }
+            25% { color: #ff3399; }
+            50% { color: #ffcc00; }
+            75% { color: #9900ff; }
+            100% { color: #00ff99; }
+        }
+
+        .login-title span {
+            display: inline-block;
+            opacity: 0;
+            animation: enterAnimation 1s forwards;
+        }
+
+        .l { animation-delay: 0s; }
+        .o { animation-delay: 0.2s; }
+        .g { animation-delay: 0.4s; }
+        .i { animation-delay: 0.6s; }
+        .n { animation-delay: 0.8s; }
+
+        @keyframes enterAnimation {
+            0% { transform: translateX(-50px); opacity: 0; }
+            25% { transform: translateY(50px); opacity: 0.3; }
+            50% { transform: translateY(-50px); opacity: 0.6; }
+            75% { transform: translateX(50px); opacity: 0.8; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .button-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .toggle-btn {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: #00ccff;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .toggle-btn:hover {
+            background: red;
+        }
+
+        form {
+            display: none;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            animation: textColorChange 4s infinite alternate;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: black;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: white;
+            opacity: 0.6;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #00ccff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: red;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        a {
+            color: #00ccff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        @keyframes textColorChange {
+            0% { color: #00ccff; }
+            25% { color: #ff3399; }
+            50% { color: #ffcc00; }
+            75% { color: #9900ff; }
+            100% { color: #00ff99; }
+        }
+
+        .dark-mode {
+            background: #2e2e2e;
+            color: white;
+        }
+
+        .light-mode {
+            background: #fff;
+            color: #000;
+        }
+
+        .mode-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 60px;
+            height: 30px;
+            background-color: #00ccff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: bold;
+        }
+
+        .mode-btn:hover {
+            background-color: red;
+            color: black;
+        }
+
+        /* Mode yang lebih dinamis */
+        .mode-btn.light-mode-btn {
+            background-color: #00ccff;
+        }
+
+        .mode-btn.dark-mode-btn {
+            background-color: #ff3399;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="mode-btn" onclick="toggleMode()">🌙</button>
+
+    <div class="container">
+        <div class="form-box">
+            <div class="login-title">
+                <span class="l">L</span>
+                <span class="o">o</span>
+                <span class="g">g</span>
+                <span class="i">i</span>
+                <span class="n">n</span>
+            </div>
+
+            <div class="button-box">
+                <button class="toggle-btn" onclick="showLogin()">Login</button>
+                <button class="toggle-btn" onclick="showRegister()">Registrasi</button>
+            </div>
+
+            <!-- Form Login -->
+            <form id="loginForm">
+                <h2>Form Login</h2>
+                <input type="email" placeholder="Masukkan Email" required>
+                <input type="password" placeholder="Masukkan Password" required>
+                <button type="submit">Login</button>
+                <p>Belum punya akun? <a href="#" onclick="showRegister()">Daftar sekarang</a></p>
+            </form>
+
+            <!-- Form Registrasi -->
+            <form id="registerForm">
+                <h2>Form Registrasi</h2>
+                <input type="text" placeholder="Nama lengkap" required>
+                <input type="email" placeholder="Masukkan Email" required>
+                <input type="password" placeholder="Masukkan Password" required>
+                <input type="password" placeholder="Ulangi password" required>
+                <button type="submit">Daftar</button>
+                <p>Sudah punya akun? <a href="#" onclick="showLogin()">Login sekarang</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let isDarkMode = false;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showLogin();
+            updateModeButton();
+        });
+
+        function showLogin() {
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("registerForm").style.display = "none";
+        }
+
+        function showRegister() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
+        }
+
+        function toggleMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const container = document.querySelector('.container');
+            const modeButton = document.querySelector('.mode-btn');
+            if (isDarkMode) {
+                body.classList.add('dark-mode');
+                body.classList.remove('light-mode');
+                container.classList.add('dark-mode');
+                container.classList.remove('light-mode');
+                modeButton.textContent = "☀️";
+                modeButton.classList.remove('light-mode-btn');
+                modeButton.classList.add('dark-mode-btn');
+            } else {
+                body.classList.add('light-mode');
+                body.classList.remove('dark-mode');
+                container.classList.add('light-mode');
+                container.classList.remove('dark-mode');
+                modeButton.textContent = "🌙";
+                modeButton.classList.remove('dark-mode-btn');
+                modeButton.classList.add('light-mode-btn');
+            }
+        }
+
+        function updateModeButton() {
+            const modeButton = document.querySelector('.mode-btn');
+            if (isDarkMode) {
+                modeButton.classList.add('dark-mode-btn');
+            } else {
+                modeButton.classList.add('light-mode-btn');
+            }
+        }
+        
+        function toggleMode() {
+    isDarkMode = !isDarkMode;
+    const body = document.body;
+    const container = document.querySelector('.container');
+    const modeButton = document.querySelector('.mode-btn');
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
+        container.classList.add('dark-mode');
+        container.classList.remove('light-mode');
+        modeButton.textContent = "☀️";  // Switch to light mode
+    } else {
+        body.classList.add('light-mode');
+        body.classList.remove('dark-mode');
+        container.classList.add('light-mode');
+        container.classList.remove('dark-mode');
+        modeButton.textContent = "🌙";  // Switch to dark mode
+    }
+}
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salin Kode Catatan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        body h1 {
+            color: #3498db;
+        }
+
+        body.dark-mode h1 {
+            color: #00ffcc;
+        }
+
+        .copy-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .code-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        textarea {
+            padding: 10px;
+            font-size: 18px; 
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            resize: none;
+            background-color: #f9f9f9;
+            height: 200px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode textarea {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-color: #7f8c8d;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        body button {
+            background-color: #3498db;
+        }
+        
+        body.dark-mode button {
+            background-color: #00ffcc;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .section-title {
+            color: #ecf0f1;
+        }
+
+        .mode-toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mode-toggle-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Warna tombol ubah mode */
+        .dark-mode .mode-toggle-btn {
+            background-color: #00ffcc; /* Hijau neon */
+        }
+    </style>
+</head>
+<body>
+  
+    <button class="mode-toggle-btn" onclick="toggleMode()">☀️</button>
+
+    <h1 id="dynamicTitle">Salin kode Kalender</h1>
+
+    <div class="copy-container">
+        <div class="code-box">
+            <div class="section-title">HTML</div>
+            <textarea id="htmlText" readonly>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>salin kode Catatan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Catatan</h2>
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="Tambahkan judul...">
+            <button onclick="addTask()">Tambah</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+            </textarea>
+            <button onclick="copyText('htmlText')">Salin HTML</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">CSS</div>
+            <textarea id="cssText" readonly>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background: #16213e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    text-align: center;
+}
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+button {
+    background: #0f3460;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:hover {
+    background: #e94560;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    background: #0f3460;
+    padding: 8px;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 5px;
+}
+.buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+.edit-btn, .delete-btn, .copy-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.edit-btn:hover { background: #f39c12; }
+.delete-btn:hover { background: red; color: white; }
+.copy-btn:hover { background: #3498db; color: white; }
+.note {
+    font-size: 14px;
+    background: #0d1b2a;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+            </textarea>
+            <button onclick="copyText('cssText')">Salin CSS</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">JavaScript</div>
+            <textarea id="jsText" readonly>
+document.addEventListener("DOMContentLoaded", loadTasks);
+
+function addTask() {
+    let taskInput = document.getElementById("taskInput");
+    let taskText = taskInput.value.trim();
+
+    if (taskText === "") return;
+
+    let taskList = document.getElementById("taskList");
+    let li = document.createElement("li");
+
+    li.innerHTML = `
+        <strong class="task-title">${taskText}</strong>
+        <p class="note">(Belum ada isi)</p>
+        <div class="buttons">
+            <button class="edit-btn" onclick="editTask(this)">Tambah Isi</button>
+            <button class="copy-btn" onclick="copyTask(this)">Salin</button>
+            <button class="delete-btn" onclick="deleteTask(this)">Hapus</button>
+        </div>
+    `;
+
+    taskList.appendChild(li);
+    saveTasks();
+    taskInput.value = "";
+}
+
+function editTask(button) {
+    let note = button.parentElement.previousElementSibling;
+    let newText = prompt("Tambahkan isi catatan:", note.innerText === "(Belum ada isi)" ? "" : note.innerText);
+
+    if (newText !== null && newText.trim() !== "") {
+        note.innerText = newText;
+        saveTasks();
+    }
+}
+
+function copyTask(button) {
+    let taskTitle = button.parentElement.parentElement.querySelector(".task-title").innerText;
+    let note = button.parentElement.previousElementSibling.innerText;
+    let fullText = `${taskTitle}\n\n${note}`;
+
+    navigator.clipboard.writeText(fullText).then(() => {
+        alert("Tugas disalin:\n\n" + fullText);
+    });
+}
+
+function deleteTask(button) {
+    button.parentElement.parentElement.remove();
+    saveTasks();
+}
+
+function saveTasks() {
+    let tasks = [];
+    document.querySelectorAll("#taskList li").forEach(li => {
+        let title = li.querySelector(".task-title").innerText;
+        let note = li.querySelector(".note").innerText;
+        tasks.push({ title, note });
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+    let savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    let taskList = document.getElementById("taskList");
+
+    savedTasks.forEach(task => {
+        let li = document.createElement("li");
+        li.innerHTML = `
+            <strong class="task-title">${task.title}</strong>
+            <p class="note">${task.note}</p>
+            <div class="buttons">
+                <button class="edit-btn" onclick="editTask(this)">Tambah Isi</button>
+                <button class="copy-btn" onclick="copyTask(this)">Salin</button>
+                <button class="delete-btn" onclick="deleteTask(this)">Hapus</button>
+            </div>
+        `;
+        taskList.appendChild(li);
+    });
+}
+            </textarea>
+            <button onclick="copyText('jsText')">Salin JavaScript</button>
+        </div>
+    </div>
+
+    <script>
+        function copyText(id) {
+            var copyText = document.getElementById(id);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy");
+            alert("Kode berhasil disalin!");
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function changeColorDynamic() {
+            const colors = ['#3498db', '#00ffcc', '#9b59b6', '#e74c3c', '#2ecc71'];
+            const title = document.getElementById('dynamicTitle');
+            const buttons = document.querySelectorAll('button');
+
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            title.style.color = color;
+            buttons.forEach(button => {
+                button.style.backgroundColor = color;
+            });
+        }
+        
+        setInterval(changeColorDynamic, 800);
+        
+        function toggleMode() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+    
+    // Mengubah ikon sesuai dengan mode
+    const modeButton = document.querySelector('.mode-toggle-btn');
+    if (body.classList.contains("dark-mode")) {
+        modeButton.textContent = "🌙"; // Ikon bulan untuk mode gelap
+    } else {
+        modeButton.textContent = "☀️"; // Ikon matahari untuk mode terang
+    }
+}
+    </script>
+
+</body>
+</html>

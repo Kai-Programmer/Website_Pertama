@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salin Kode Kalkulator Sederhana</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        body h1 {
+            color: #3498db;
+        }
+
+        body.dark-mode h1 {
+            color: #00ffcc;
+        }
+
+        .copy-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .code-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        textarea {
+            padding: 10px;
+            font-size: 18px; 
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            resize: none;
+            background-color: #f9f9f9;
+            height: 200px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode textarea {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-color: #7f8c8d;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        body button {
+            background-color: #3498db;
+        }
+        
+        body.dark-mode button {
+            background-color: #00ffcc;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .section-title {
+            color: #ecf0f1;
+        }
+
+        .mode-toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mode-toggle-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Warna tombol ubah mode */
+        .dark-mode .mode-toggle-btn {
+            background-color: #00ffcc; /* Hijau neon */
+        }
+    </style>
+</head>
+<body>
+  
+    <button class="mode-toggle-btn" onclick="toggleMode()">☀️</button>
+
+    <h1 id="dynamicTitle">Salin Kode Kalkulator Sederhana</h1>
+
+    <div class="copy-container">
+        <div class="code-box">
+            <div class="section-title">HTML</div>
+            <textarea id="htmlText" readonly>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Sederhana</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <!-- Baris pertama -->
+      <button class="backspace" onclick="backspace()">⌫</button>
+      <button onclick="appendOperator('(')">(</button>
+      <button onclick="appendOperator(')')">)</button>
+      <button onclick="appendOperator('/')">÷</button>
+      
+      <!-- Baris kedua -->
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button onclick="appendOperator('+')">+</button>
+      
+      <!-- Baris ketiga -->
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button onclick="appendOperator('-')">-</button>
+      
+      <!-- Baris keempat -->
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button onclick="appendOperator('*')">×</button>
+
+      <!-- Baris kelima -->
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="appendOperator('.')">.</button>
+      <button class="equal" onclick="calculateResult()">=</button>
+      <button class="clear" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+            </textarea>
+            <button onclick="copyText('htmlText')">Salin HTML</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">CSS</div>
+            <textarea id="cssText" readonly>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.calculator {
+  width: 260px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#display {
+  width: 100%;
+  height: 50px;
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.buttons button {
+  height: 60px;
+  font-size: 24px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #555;
+}
+
+.buttons button:active {
+  background-color: #666;
+}
+
+.buttons .equal {
+  background-color: #4CAF50;
+  grid-column: span 2;
+}
+
+.buttons .equal:hover {
+  background-color: #45a049;
+}
+
+.buttons .clear {
+  background-color: #e74c3c;
+  grid-column: span 2;
+}
+
+.buttons .clear:hover {
+  background-color: #c0392b;
+}
+
+.buttons .backspace {
+  background-color: #f39c12;
+}
+
+.buttons .backspace:hover {
+  background-color: #e67e22;
+}
+            </textarea>
+            <button onclick="copyText('cssText')">Salin CSS</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">JavaScript</div>
+            <textarea id="jsText" readonly>
+let display = document.getElementById('display');
+
+function appendNumber(number) {
+  display.value += number;
+}
+
+function appendOperator(operator) {
+  display.value += operator;
+}
+
+function clearDisplay() {
+  display.value = '';
+}
+
+function backspace() {
+  display.value = display.value.slice(0, -1);
+}
+
+function calculateResult() {
+  try {
+    // Gantikan × menjadi * dan ÷ menjadi / untuk operasi
+    let expression = display.value.replace('×', '*').replace('÷', '/');
+    display.value = eval(expression);
+  } catch (error) {
+    display.value = 'Error';
+  }
+}
+            </textarea>
+            <button onclick="copyText('jsText')">Salin JavaScript</button>
+        </div>
+    </div>
+
+    <script>
+        function copyText(id) {
+            var copyText = document.getElementById(id);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy");
+            alert("Kode berhasil disalin!");
+        }
+
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle("dark-mode");
+            
+            // Mengubah ikon sesuai dengan mode
+            const modeButton = document.querySelector('.mode-toggle-btn');
+            if (body.classList.contains("dark-mode")) {
+                modeButton.textContent = "🌙"; // Ikon bulan untuk mode gelap
+            } else {
+                modeButton.textContent = "☀️"; // Ikon matahari untuk mode terang
+            }
+        }
+        
+        function changeColorDynamic() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                let isBlue = textarea.classList.contains('blue-text');
+                textarea.classList.toggle('blue-text', !isBlue);
+                textarea.classList.toggle('black-text', isBlue);
+            });
+        }
+
+        function changeColorDynamic() {
+            const colors = ['#3498db', '#00ffcc', '#9b59b6', '#e74c3c', '#2ecc71'];
+            const title = document.getElementById('dynamicTitle');
+            const buttons = document.querySelectorAll('button');
+
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            title.style.color = color;
+            buttons.forEach(button => {
+                button.style.backgroundColor = color;
+            });
+        }
+        
+        setInterval(changeColorDynamic, 800);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salin Kode Kalender</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        body h1 {
+            color: #3498db;
+        }
+
+        body.dark-mode h1 {
+            color: #00ffcc;
+        }
+
+        .copy-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .code-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        textarea {
+            padding: 10px;
+            font-size: 18px; 
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            resize: none;
+            background-color: #f9f9f9;
+            height: 200px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode textarea {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-color: #7f8c8d;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        body button {
+            background-color: #3498db;
+        }
+        
+        body.dark-mode button {
+            background-color: #00ffcc;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .section-title {
+            color: #ecf0f1;
+        }
+
+        .mode-toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mode-toggle-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Warna tombol ubah mode */
+        .dark-mode .mode-toggle-btn {
+            background-color: #00ffcc; /* Hijau neon */
+        }
+    </style>
+</head>
+<body>
+  
+    <button class="mode-toggle-btn" onclick="toggleMode()">☀️</button>
+
+    <h1 id="dynamicTitle">Salin kode Kalender</h1>
+
+    <div class="copy-container">
+        <div class="code-box">
+            <div class="section-title">HTML</div>
+            <textarea id="htmlText" readonly>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalender Interaktif dengan Pengingat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="calendar">
+        <header>
+            <button id="prev">‹ Prev</button>
+            <span id="month-year"></span>
+            <button id="next">Next ›</button>
+        </header>
+
+        <div class="days">
+            <div class="header">Sun</div>
+            <div class="header">Mon</div>
+            <div class="header">Tue</div>
+            <div class="header">Wed</div>
+            <div class="header">Thu</div>
+            <div class="header">Fri</div>
+            <div class="header">Sat</div>
+        </div>
+
+        <div id="dates" class="days"></div>
+    </div>
+
+    <div class="reminder">
+        <label for="reminder-input">Pengingat:</label>
+        <input type="text" id="reminder-input" placeholder="Isi pengingat">
+        <button id="set-reminder">Set Pengingat</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+            </textarea>
+            <button onclick="copyText('htmlText')">Salin HTML</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">CSS</div>
+            <textarea id="cssText" readonly>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    text-align: center;
+    padding: 20px;
+}
+
+.calendar {
+    display: inline-block;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+}
+
+.calendar header {
+    margin-bottom: 10px;
+}
+
+.calendar button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calendar button:hover {
+    background-color: #45a049;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.days div {
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.days div:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.days .header {
+    font-weight: bold;
+    background-color: #f1f1f1;
+    font-size: 12px;
+}
+
+.days .today {
+    background-color: #ff9800;
+    color: white;
+}
+
+.reminder {
+    margin-top: 10px;
+}
+
+.reminder input {
+    padding: 5px;
+    font-size: 14px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.reminder button {
+    padding: 5px 10px;
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reminder button:hover {
+    background-color: #FF5722;
+}
+            </textarea>
+            <button onclick="copyText('cssText')">Salin CSS</button>
+        </div>
+
+        <div class="code-box">
+            <div class="section-title">JavaScript</div>
+            <textarea id="jsText" readonly>
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
+let reminders = loadReminders(); // Memuat pengingat dari localStorage
+
+function renderCalendar() {
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
+    let datesHTML = "";
+
+    document.getElementById('month-year').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+    for (let i = 0; i < firstDay; i++) {
+        datesHTML += `<div></div>`;
+    }
+
+    for (let i = 1; i <= lastDate; i++) {
+        const today = (i === currentDate.getDate() && currentMonth === currentDate.getMonth() && currentYear === currentDate.getFullYear()) ? 'today' : '';
+        const reminderKey = `${currentYear}-${currentMonth + 1}-${i}`;
+        const reminder = reminders[reminderKey] ? 
+            `<br><span style="color: red;">${reminders[reminderKey]}</span> <button onclick="deleteReminder('${reminderKey}')">Hapus</button>` 
+            : '';
+        datesHTML += `<div class="${today}" onclick="selectDate(${i})">${i}${reminder}</div>`;
+    }
+
+    document.getElementById('dates').innerHTML = datesHTML;
+}
+
+document.getElementById('prev').addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    renderCalendar();
+});
+
+document.getElementById('next').addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    renderCalendar();
+});
+
+document.getElementById('set-reminder').addEventListener('click', () => {
+    const reminderText = document.getElementById('reminder-input').value;
+    const selectedDate = document.querySelector('.selected');
+
+    if (reminderText && selectedDate) {
+        const selectedDay = selectedDate.textContent;
+        const reminderKey = `${currentYear}-${currentMonth + 1}-${selectedDay}`;
+        reminders[reminderKey] = reminderText;
+        saveReminders();
+        renderCalendar();
+        document.getElementById('reminder-input').value = '';
+    } else {
+        alert("Pilih tanggal dan masukkan pengingat.");
+    }
+});
+
+function selectDate(day) {
+    const selectedDate = document.querySelector('.selected');
+    if (selectedDate) {
+        selectedDate.classList.remove('selected');
+    }
+
+    const dateDivs = document.querySelectorAll('#dates div');
+    for (const div of dateDivs) {
+        if (div.textContent == day) {
+            div.classList.add('selected');
+            break;
+        }
+    }
+}
+
+function deleteReminder(reminderKey) {
+    delete reminders[reminderKey];
+    saveReminders();
+    renderCalendar();
+}
+
+function saveReminders() {
+    localStorage.setItem('reminders', JSON.stringify(reminders));
+}
+
+function loadReminders() {
+    const savedReminders = localStorage.getItem('reminders');
+    return savedReminders ? JSON.parse(savedReminders) : {};
+}
+
+renderCalendar();
+            </textarea>
+            <button onclick="copyText('jsText')">Salin JavaScript</button>
+        </div>
+    </div>
+
+    <script>
+        function copyText(id) {
+            var copyText = document.getElementById(id);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy");
+            alert("Kode berhasil disalin!");
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function changeColorDynamic() {
+            const colors = ['#3498db', '#00ffcc', '#9b59b6', '#e74c3c', '#2ecc71'];
+            const title = document.getElementById('dynamicTitle');
+            const buttons = document.querySelectorAll('button');
+
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            title.style.color = color;
+            buttons.forEach(button => {
+                button.style.backgroundColor = color;
+            });
+        }
+        
+        setInterval(changeColorDynamic, 800);
+        
+        function toggleMode() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+    
+    // Mengubah ikon sesuai dengan mode
+    const modeButton = document.querySelector('.mode-toggle-btn');
+    if (body.classList.contains("dark-mode")) {
+        modeButton.textContent = "🌙"; // Ikon bulan untuk mode gelap
+    } else {
+        modeButton.textContent = "☀️"; // Ikon matahari untuk mode terang
+    }
+}
+    </script>
+
+</body>
+</html>

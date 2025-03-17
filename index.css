@@ -1,0 +1,167 @@
+/* Styling untuk body dan elemen utama */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #0d0d0d;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+/* Animasi untuk elemen yang muncul */
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mode-switch, .login-btn {
+    opacity: 0;
+    animation: slide-up 3s ease-out forwards;
+}
+
+/* Tombol Kontainer */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Tombol Login dan Mode Switch */
+.login-btn, .mode-switch {
+    padding: 10px 20px;
+    background-color: #444;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.login-btn:hover, .mode-switch:hover {
+    background-color: #666;
+    box-shadow: 0 0 10px cyan;
+}
+
+/* Animasi berputar untuk tombol */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.btn {
+    color: black;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 1s, box-shadow 1s;
+    animation: rotate 2s ease-out forwards;
+}
+
+/* Tombol Ubah Mode di kiri dan Login di kanan */
+.top-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+}
+
+.login-btn {
+    margin-left: auto;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: cyan;
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan;
+    margin-bottom: 10px;
+    transition: color 1s;
+}
+
+@keyframes rotateAndDisappear {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}
+
+#kai-title {
+    display: inline-block;
+    animation: rotateAndDisappear 4s forwards;
+}
+
+/* Kotak Konten */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-align: left;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Mode terang dan gelap */
+.dark-mode {
+    background: #0d0d0d;
+    color: #ffffff;
+}
+
+.light-mode {
+    background: #f0f0f0;
+    color: #333;
+}
+
+/* Pemisah antar tombol dan konten */
+hr {
+    border: 0;
+    border-top: 2px solid cyan;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
